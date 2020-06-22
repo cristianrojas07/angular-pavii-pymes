@@ -25,6 +25,7 @@ export class ListaCargaComponent implements OnInit {
         IdArticuloFamilia: Number(this.fg.value.IdArticuloFamilia), 
         Nombre: this.fg.value.Nombre 
     });
+    window.alert("Articulo Agregado");
   }
 
 }
