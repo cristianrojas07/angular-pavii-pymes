@@ -1,0 +1,16 @@
+<div class="container">
+    <table class="table table-striped">
+        <thead class="thead-inverse">
+            <tr>
+                <th>ID Articulo Familia</th>
+                <th>Nombre</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let art of articuloFamilia'>
+                    <td>{{art.IdArticuloFamilia}}</td>
+                    <td>{{art.Nombre | uppercase}}</td>
+                </tr>
+            </tbody>
+    </table>
+</div>
