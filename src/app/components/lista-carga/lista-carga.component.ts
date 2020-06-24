@@ -15,17 +15,24 @@ export class ListaCargaComponent implements OnInit {
 
   ngOnInit(): void {
     this.fg = this.fb.group({
-        IdArticuloFamilia: [''],
-        Nombre: ['']
+        IdArticuloFamilia: ['', [Validators.required, Validators.maxLength(5), Validators.pattern('^[0-9]*$')]],
+        Nombre: ['', [Validators.required]]
     })
   }
 
   grabar(){
-    ArticulosFamilias.push({
-        IdArticuloFamilia: Number(this.fg.value.IdArticuloFamilia), 
-        Nombre: this.fg.value.Nombre 
-    });
-    window.alert("Articulo Agregado");
+    if(this.fg.valid){
+        ArticulosFamilias.push({
+            IdArticuloFamilia: Number(this.fg.value.IdArticuloFamilia), 
+            Nombre: this.fg.value.Nombre 
+        });
+        window.alert("Articulo Agregado");
+    }else{
+        window.alert("Ingrese un valor");
+    }
   }
 
+  limpiar(){
+    this.fg.reset();
+  }
 }

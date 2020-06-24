@@ -2,12 +2,25 @@
     <form [formGroup] = "fg">
         <div class="form-group">
             <label for="">ID Articulo Familia</label>
-            <input type="text" class="form-control" formControlName="IdArticuloFamilia">
+            <input type="text" class="form-control" formControlName="IdArticuloFamilia" aria-describedby="helpId" [ngClass]="{'is-invalid': (fg.controls.IdArticuloFamilia.touched || fg.controls.IdArticuloFamilia.dirty) && fg.controls.IdArticuloFamilia.errors, 'is-valid':!fg.controls.IdArticuloFamilia.errors}">
+            <div>
+                <small id="helpId" class="text-danger" *ngIf="fg.controls.IdArticuloFamilia.errors?.required && (fg.controls.IdArticuloFamilia.dirty || fg.controls.IdArticuloFamilia.touched)">Dato Requerido</small>
+            </div>
+            <div>
+                <small id="helpId" class="text-danger" *ngIf="fg.controls.IdArticuloFamilia.errors?.maxlength">Ingrese un valor menor a 5 digitos</small>
+            </div>
+            <div>
+                <small id="helpId" class="text-danger" *ngIf="fg.controls.IdArticuloFamilia.errors?.pattern">Ingrese solo valores numericos</small>
+            </div>
         </div>
         <div class="form-group">
             <label for="">Nombre</label>
-            <input type="text" class="form-control" formControlName="Nombre">
+            <input type="text" class="form-control" formControlName="Nombre" aria-describedby="helpId" [ngClass]="{'is-invalid': (fg.controls.Nombre.touched || fg.controls.Nombre.dirty) && fg.controls.Nombre.errors, 'is-valid':!fg.controls.Nombre.errors}">
+            <small id="helpId" class="text-danger" *ngIf="fg.controls.Nombre.invalid && (fg.controls.Nombre.dirty || fg.controls.Nombre.touched)">Categoria o familia del articulo</small>
         </div>
-        <input class="btn btn-primary" type="button" (click)="grabar()" value="Grabar">
+        <div class="form-group">
+            <input class="btn btn-primary" type="button" (click)="grabar()" value="Grabar" [disabled]="fg.valid?'':'disabled'">
+            <input class="btn btn-secondary" type="button" (click)="limpiar()" value="Limpiar ">
+        </div>
     </form>
 </div>

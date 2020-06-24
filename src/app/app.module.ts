@@ -8,12 +8,14 @@ import { PrincipalComponent } from './components/principal/principal.component';
 import { ListaArticulosComponent } from './components/lista-articulos/lista-articulos.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { ListaCargaComponent } from './components/lista-carga/lista-carga.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports:      [ 
     BrowserModule, 
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot([
         {path:'articulos', component: ListaArticulosComponent},
         {path:'inicio', component:InicioComponent},
